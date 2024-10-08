@@ -1,4 +1,5 @@
 #include "./include/utils.hpp"
+#include "include/Token.hpp"
 
 #include <cstdlib>
 #include <fstream>
@@ -41,5 +42,22 @@ std::string readAndFormat(const std::string &path) {
 void write(const std::string &path, const std::string &src) {
   std::fstream out(path, std::ios::out);
   out << src;
+};
+std::string literalTokenType(TType t) {
+  switch (t) {
+  case TType::O_PAREN:
+    return "O_PAREN";
+  case TType::C_PAREN:
+    return "C_PAREN";
+  case TType::RETURN:
+    return "RETURN";
+  case TType::ENDL:
+    return "ENDL";
+  case TType::EXIT:
+    return "EXIT";
+  case TType::INT:
+    return "INT";
+  };
+  return "UNKNOWN";
 };
 } // namespace utils
